@@ -11,7 +11,7 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 
-const port = 3000;
+const localPort = 3000;
 
 app.get('/', (req, res) => {
     res.sendFile(__dirname + "/signup.html");
@@ -35,11 +35,11 @@ app.post('/', (req, res) => {
 
     const jsonData = JSON.stringify(data);
 
-    const url = "https://us13.api.mailchimp.com/3.0/lists/list key";
+    const url = "https://us13.api.mailchimp.com/3.0/lists/list_key";
 
     const options = {
         method: "POST",
-        auth: "jakub2:api key"
+        auth: "jakub2:api_key"
     };
 
     const request = https.request(url, options, (response) => {
@@ -64,6 +64,6 @@ app.post('/failure', (req, res) => {
     res.redirect("/");
 });
 
-app.listen(port, () => {
-    console.log(`Server listening on ${port}`);
+app.listen(process.env.PORT || localPort, () => { 
+    console.log(`Server listening on ${localPort}`);
 });
