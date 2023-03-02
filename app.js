@@ -35,11 +35,11 @@ app.post('/', (req, res) => {
 
     const jsonData = JSON.stringify(data);
 
-    const url = "https://us13.api.mailchimp.com/3.0/lists/6e37105dc2";
+    const url = "https://us13.api.mailchimp.com/3.0/lists/list key";
 
     const options = {
         method: "POST",
-        auth: "jakub1:7906f1f24c312de406fbd0fa9dae2e66-us13"
+        auth: "jakub2:api key"
     };
 
     const request = https.request(url, options, (response) => {
@@ -60,14 +60,10 @@ app.post('/', (req, res) => {
 
 });
 
+app.post('/failure', (req, res) => {
+    res.redirect("/");
+});
+
 app.listen(port, () => {
     console.log(`Server listening on ${port}`);
 });
-
-
-
-// API key
-// 7906f1f24c312de406fbd0fa9dae2e66-us13
-
-//  audience/list ID
-// 6e37105dc2
